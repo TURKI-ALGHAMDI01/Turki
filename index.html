@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UMMS — نظام إدارة الاجتماعات الموحد · الهيئة السعودية للمياه</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  ROLE SWITCHER BAR                                      ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="role-bar">
+  <div class="rb-brand">
+    <img class="rb-logo" src="assets/logo/swa-logo.jpg" alt="SWA">
+    <span class="rb-system-name">UMMS</span>
+  </div>
+  <div class="rb-tabs">
+    <div class="rb-tab active" onclick="switchScreen('exec',this)">
+      <span class="rb-dot" style="background:#C4A055;"></span>معالي الرئيس
+    </div>
+    <div class="rb-tab" onclick="switchScreen('director',this)">
+      <span class="rb-dot" style="background:#1971E5;"></span> مكتب الرئيس
+    </div>
+    <div class="rb-tab" onclick="switchScreen('employee',this)">
+      <span class="rb-dot" style="background:#1AD9C7;"></span>الموظف
+    </div>
+    <div class="rb-tab" onclick="switchScreen('admin',this)">
+      <span class="rb-dot" style="background:#553899;"></span>مسؤول النظام
+    </div>
+  </div>
+  <div class="rb-right">
+    <span class="rb-clock" id="live-clock">15:12</span>
+    <span class="rb-version">v 2.6</span>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  SCREEN 1 — PRESIDENT  ████                             ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="screen active" id="screen-exec">
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div>
+        <div class="sb-org-arabic">الهيئة السعودية للمياه</div>
+        <div class="sb-org-english">Saudi Water Authority</div>
+      </div>
+    </div>
+    <div class="sb-system"><span class="sb-system-pill">UMMS</span><span class="sb-system-sub">نظام إدارة الاجتماعات</span></div>
+    <nav class="sb-nav">
+      <div class="sb-group-label">القائمة الرئيسية</div>
+      <div class="sb-item active" data-sec="sec-exec-dash" onclick="showSection('exec','sec-exec-dash',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="2" width="16" height="13" rx="2"></rect><path d="M1 6h16M5 2v4M13 2v4"></path></svg>
+        لوحتي
+      </div>
+      <div class="sb-group-label" style="margin-top:14px;">الاجتماعات المؤسسية</div>
+      <div class="sb-item" data-sec="sec-exec-board" onclick="showSection('exec','sec-exec-board',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="16" height="12" rx="2"/><path d="M5 3V1M13 3V1M1 7h16"/><circle cx="9" cy="12" r="1.5"/></svg>
+        اجتماعات مجالس الإدارة
+        <span class="sb-badge" style="background:var(--amber-bg);color:var(--amber-mid);border:1px solid #DEB86A;" id="board-upcoming-badge"></span>
+      </div>
+      <div class="sb-item" data-sec="sec-exec-committees" onclick="showSection('exec','sec-exec-committees',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14c0-2.5 2-4 4-4s4 1.5 4 4"/><circle cx="6" cy="6" r="3"/><path d="M13 9c1.5 0 3 1 3 3"/><circle cx="13" cy="5" r="2.5"/></svg>
+        اجتماعات ولجان أخرى
+        <span class="sb-badge blue" id="comm-upcoming-badge"></span>
+      </div>
+    </nav>
+    <div class="sb-user">
+      <div class="sb-avatar" style="background:linear-gradient(135deg,#1550A0,#3B82D4);">ع</div>
+      <div><div class="sb-user-name">عبدالله العبدالكريم</div><div class="sb-user-role">معالي الرئيس</div></div>
+      <div class="sb-online-dot"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="header-title-col">
+        <div class="header-name">معالي الرئيس عبدالله العبدالكريم</div>
+        <div class="header-role">الهيئة السعودية للمياه</div>
+      </div>
+      <div class="header-right">
+        <div>
+          <div class="header-date-gregorian js-date">الخميس، ٢ أبريل ٢٠٢٦</div>
+          <div class="header-date-hijri js-hijri">١٤ شوال ١٤٤٧هـ</div>
+        </div>
+        <div class="header-separator"></div>
+        <div class="header-icon-btn">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="#4A6080" stroke-width="1.8"><path d="M10 2a6 6 0 00-6 6c0 3.5-1.5 5-1.5 5h15S16 11.5 16 8a6 6 0 00-6-6z"></path><path d="M8.5 17a1.5 1.5 0 003 0"></path></svg>
+          <span class="header-notif-dot"></span>
+        </div>
+        <div class="header-avatar" style="background:linear-gradient(135deg,#0B2E56,#2468C4);">ع</div>
+      </div>
+    </header>
+
+    <!-- ── EXEC: DASHBOARD (لوحتي) ── -->
+    <!-- Clicking a KPI card opens a clean popup overlay (modal-kpi).         -->
+    <!-- No inline blocks — all detail lives inside the floating popup.        -->
+    <div id="sec-exec-dash" class="page-body exec-section">
+
+      <!-- KPI Summary Cards — each opens a popup, nothing more -->
+      <div class="kpi-row kpi-row-3 anim-1">
+
+        <div class="kpi-card" onclick="openKpiModal('meetings')">
+          <div class="kpi-accent-bar" style="background:var(--blue-mid);"></div>
+          <div class="kpi-label">اجتماعات اليوم</div>
+          <div class="kpi-value" style="color:var(--blue-mid);">3</div>
+          <div class="kpi-sub">٢ مؤكدة · <b>١ معدّل</b></div>
+        </div>
+
+        <div class="kpi-card" onclick="openKpiModal('comms')">
+          <div class="kpi-accent-bar" style="background:var(--purple);"></div>
+          <div class="kpi-label">الاتصالات اليومية</div>
+          <div class="kpi-value" style="color:var(--purple);">2</div>
+          <div class="kpi-sub">بانتظار قرار المعالي</div>
+        </div>
+
+        <div class="kpi-card" onclick="openKpiModal('week')">
+          <div class="kpi-accent-bar" style="background:var(--navy);"></div>
+          <div class="kpi-label">ملخص الأسبوع القادم</div>
+          <div class="kpi-value" style="color:var(--navy);">7</div>
+          <div class="kpi-sub">٥ اجتماعات · ٢ اتصالات</div>
+        </div>
+
+      </div><!-- /kpi-row -->
+
+      <!-- اجتماعات اليوم — preview · إعادة جدولة only -->
+      <div class="anim-2">
+        <div class="section-label">
+          <div class="section-label-left">
+            <div class="section-bar" style="background:var(--blue-mid);"></div>
+            <span class="section-title">اجتماعات اليوم</span>
+            <span class="section-count">٣ اجتماعات</span>
+          </div>
+        </div>
+        <div class="sc">
+          <table class="data-table">
+            <thead><tr><th>الوقت</th><th>العنوان</th><th>المكان</th><th>الحضور</th><th>الإجراء</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="time-cell">٩:٠٠ — ١٠:٠٠ ص</td>
+                <td class="bold">استعراض خطة التحول الرقمي<div style="margin-top:3px;"><span class="pill live">● جارٍ الآن</span></div></td>
+                <td>قاعة المركز التنفيذي</td>
+                <td><span class="att-chip" onclick="openAttendees('استعراض خطة التحول الرقمي','meet1');event.stopPropagation();">7</span></td>
+                <td><button class="action-btn reschedule" onclick="openReschedule('استعراض خطة التحول الرقمي')">إعادة جدولة</button></td>
+              </tr>
+              <tr>
+                <td class="time-cell">١٠:٠٠ — ١١:٣٠ ص</td>
+                <td class="bold">الاجتماع الدوري لمتابعة سير الأعمال<div style="margin-top:3px;"><span class="pill confirmed">✓ مؤكد</span></div></td>
+                <td>قاعة اجتماعات المعالي</td>
+                <td><span class="att-chip" onclick="openAttendees('الاجتماع الدوري لمتابعة سير الأعمال','meet2');event.stopPropagation();">13</span></td>
+                <td><button class="action-btn reschedule" onclick="openReschedule('الاجتماع الدوري لمتابعة سير الأعمال')">إعادة جدولة</button></td>
+              </tr>
+              <tr>
+                <td class="time-cell">١:٣٠ — ٣:٠٠ م</td>
+                <td class="bold">اجتماع الجاهزية المؤسسية<div style="margin-top:3px;"><span class="pill modified">⚑ تم التعديل</span></div></td>
+                <td>قاعة المركز التنفيذي</td>
+                <td><span class="att-chip" onclick="openAttendees('اجتماع الجاهزية المؤسسية','meet3');event.stopPropagation();">7</span></td>
+                <td><button class="action-btn reschedule" onclick="openReschedule('اجتماع الجاهزية المؤسسية')">إعادة جدولة</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- الاتصالات اليومية — preview · قبول + إعادة جدولة only -->
+      <div class="anim-3">
+        <div class="section-label">
+          <div class="section-label-left">
+            <div class="section-bar" style="background:var(--purple);"></div>
+            <span class="section-title">الاتصالات اليومية</span>
+            <span class="section-count">٢ طلبات بانتظار القرار</span>
+          </div>
+        </div>
+        <div class="sc">
+          <table class="data-table">
+            <thead><tr><th>مقدّم الطلب</th><th>الموضوع</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div style="font-size:13px;font-weight:600;color:var(--ink);">م. عبدالعزيز فهد الحصان</div><div style="font-size:11px;color:var(--muted);">المدير التنفيذي للشؤون المالية</div></td>
+                <td>مراجعة ميزانية المشاريع الرأسمالية — الربع الثاني</td>
+                <td><span class="pill purple">بانتظار القرار</span></td>
+                <td>
+                  <div class="btn-pair">
+                    <button class="action-btn accept" onclick="openCommDecision('قبول','م. عبدالعزيز فهد الحصان')">قبول</button>
+                    <button class="action-btn reschedule" onclick="openCommDecision('تأجيل','م. عبدالعزيز فهد الحصان')">إعادة جدولة</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><div style="font-size:13px;font-weight:600;color:var(--ink);">م. ذيب القحطاني</div><div style="font-size:11px;color:var(--muted);">مدير عام الشراكات الإستراتيجية</div></td>
+                <td>برنامج الزيارة الميدانية للوفد الكوري</td>
+                <td><span class="pill purple">بانتظار القرار</span></td>
+                <td>
+                  <div class="btn-pair">
+                    <button class="action-btn accept" onclick="openCommDecision('قبول','م. ذيب القحطاني')">قبول</button>
+                    <button class="action-btn reschedule" onclick="openCommDecision('تأجيل','م. ذيب القحطاني')">إعادة جدولة</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ملخص الأسبوع القادم — four indicator cards -->
+      <div class="anim-4">
+        <div class="section-label">
+          <div class="section-label-left">
+            <div class="section-bar" style="background:var(--navy);"></div>
+            <span class="section-title">ملخص الأسبوع القادم</span>
+            <span class="section-count" id="week-range-label">٣١ مارس — ٦ أبريل</span>
+          </div>
+        </div>
+        <div class="week-grid">
+          <div class="week-card"><div class="week-card-number" style="color:var(--blue-mid);">5</div><div class="week-card-label">اجتماعات مجدولة</div></div>
+          <div class="week-card"><div class="week-card-number" style="color:var(--purple);">2</div><div class="week-card-label">اتصالات معلقة</div></div>
+          <div class="week-card"><div class="week-card-number" style="color:var(--amber-mid);">1</div><div class="week-card-label">قيد إعادة الجدولة</div></div>
+          <div class="week-card"><div class="week-card-number" style="color:var(--red-mid);">1</div><div class="week-card-label">أولوية عالية</div></div>
+        </div>
+      </div>
+
+    </div><!-- /sec-exec-dash -->
+
+
+    <!-- ── EXEC: MEETINGS DETAIL ── -->
+    <div id="sec-exec-meetings" class="page-body exec-section" style="display:none;">
+      <div class="section-label">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--blue-mid);"></div>
+          <span class="section-title">جدول اجتماعات اليوم</span>
+          <span class="section-count">٣ اجتماعات</span>
+        </div>
+      </div>
+      <div class="sc">
+        <table class="data-table">
+          <thead><tr><th>الوقت</th><th>العنوان</th><th>المكان</th><th>الحضور</th><th>الإجراء</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">٩:٠٠ — ١٠:٠٠ ص</td>
+              <td class="bold">استعراض خطة التحول الرقمي للمياه ٢٠٢٦<div style="margin-top:3px;"><span class="pill live">● جارٍ الآن</span></div></td>
+              <td>قاعة المركز التنفيذي</td>
+              <td><span class="att-chip" onclick="openAttendees('استعراض خطة التحول الرقمي','meet1');event.stopPropagation();">7</span></td>
+              <td><button class="action-btn reschedule" onclick="openReschedule('استعراض خطة التحول الرقمي')">إعادة جدولة</button></td>
+            </tr>
+            <tr>
+              <td class="time-cell">١٠:٠٠ — ١١:٣٠ ص</td>
+              <td class="bold">مجلس الإشراف على مشاريع البنية التحتية للمياه<div style="margin-top:3px;"><span class="pill confirmed">✓ مؤكد</span></div></td>
+              <td>قاعة اجتماعات المعالي</td>
+              <td><span class="att-chip" onclick="openAttendees('مجلس الإشراف','meet2');event.stopPropagation();">12</span></td>
+              <td><button class="action-btn reschedule" onclick="openReschedule('مجلس الإشراف على مشاريع البنية التحتية')">إعادة جدولة</button></td>
+            </tr>
+            <tr>
+              <td class="time-cell">١:٣٠ — ٣:٠٠ م</td>
+              <td class="bold">مناقشة مؤشرات الأداء الربعي — Q1 2026<div style="margin-top:3px;"><span class="pill modified">⚑ تم التعديل</span></div></td>
+              <td>طاولة مكتب المعالي للاجتماعات</td>
+              <td><span class="att-chip" onclick="openAttendees('مناقشة مؤشرات الأداء','meet3');event.stopPropagation();">9</span></td>
+              <td><button class="action-btn reschedule" onclick="openReschedule('مناقشة مؤشرات الأداء الربعي')">إعادة جدولة</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /sec-exec-meetings -->
+
+
+    <!-- ── EXEC: COMMUNICATIONS DETAIL ── -->
+    <div id="sec-exec-comms" class="page-body exec-section" style="display:none;">
+      <div class="section-label">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--purple);"></div>
+          <span class="section-title">الاتصالات اليومية</span>
+          <span class="section-count">٢ طلبات بانتظار القرار</span>
+        </div>
+      </div>
+      <div class="sc">
+        <table class="data-table">
+          <thead><tr><th>مقدّم الطلب</th><th>الموضوع</th><th>الأولوية</th><th>الإجراء</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div style="font-size:13px;font-weight:600;color:var(--ink);">م. عبدالعزيز فهد الحصان</div><div style="font-size:11px;color:var(--muted);">المدير التنفيذي لشؤون المالية</div></td>
+              <td>طلب اتصال عاجل بخصوص مراجعة ميزانية المشاريع الرأسمالية للربع الثاني</td>
+              <td><span class="pill high">عاجل</span></td>
+              <td>
+                <div class="btn-pair">
+                  <button class="action-btn accept" onclick="openCommDecision('قبول','م. عبدالعزيز فهد الحصان')">قبول</button>
+                  <button class="action-btn reschedule" onclick="openCommDecision('تأجيل','م. عبدالعزيز فهد الحصان')">تأجيل</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div style="font-size:13px;font-weight:600;color:var(--ink);">م. ذيب القحطاني</div><div style="font-size:11px;color:var(--muted);">مدير عام الشراكات الإستراتيجية</div></td>
+              <td>تنسيق عاجل حول برنامج الزيارة الميدانية للوفد الكوري لمحطات التحلية</td>
+              <td><span class="pill medium">متوسط</span></td>
+              <td>
+                <div class="btn-pair">
+                  <button class="action-btn accept" onclick="openCommDecision('قبول','م. ذيب القحطاني')">قبول</button>
+                  <button class="action-btn reschedule" onclick="openCommDecision('تأجيل','م. ذيب القحطاني')">تأجيل</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /sec-exec-comms -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         NEW SECTION: اجتماعات مجالس الإدارة (Board Meetings)
+         HOW TO EDIT BOARD MEETINGS MANUALLY:
+           • Edit BOARD_MEETINGS array in script.js (bottom of file)
+           • Each entry: { id, title, type, date (YYYY-MM-DD), boardType }
+           • boardType: 'swa' = هيئة المياه | 'transfer' = نقل المياه
+           • type: 'mid' = منتصف الشهر | 'end' = نهاية الشهر
+         ══════════════════════════════════════════════════════════ -->
+    <div id="sec-exec-board" class="page-body exec-section" style="display:none;">
+
+      <div class="section-label anim-1">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--amber-mid);"></div>
+          <span class="section-title">اجتماعات مجالس الإدارة</span>
+          <span class="section-count" id="board-section-count"></span>
+        </div>
+      </div>
+
+      <div class="anim-2">
+        <div class="board-cards-grid" id="board-cards-all"></div>
+      </div>
+
+    </div><!-- /sec-exec-board -->
+
+
+    <div id="sec-exec-committees" class="page-body exec-section" style="display:none;">
+
+      <div class="section-label anim-1">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--purple);"></div>
+          <span class="section-title">اجتماعات ولجان أخرى</span>
+          <span class="section-count" id="comm-section-count"></span>
+        </div>
+      </div>
+
+      <div class="anim-2">
+        <div id="committee-list"></div>
+      </div>
+
+    </div><!-- /sec-exec-committees -->
+
+
+
+  </main>
+</div><!-- /screen-exec -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  SCREEN 2 — OFFICE DIRECTOR  ████                       ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="screen" id="screen-director">
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div>
+        <div class="sb-org-arabic">الهيئة السعودية للمياه</div>
+        <div class="sb-org-english">Saudi Water Authority</div>
+      </div>
+    </div>
+    <div class="sb-system"><span class="sb-system-pill">UMMS</span><span class="sb-system-sub">مكتب المعالي</span></div>
+    <nav class="sb-nav">
+      <div class="sb-group-label">التشغيل</div>
+      <div class="sb-item active" data-sec="sec-dir-dash" onclick="showSection('director','sec-dir-dash',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="2" width="16" height="13" rx="2"></rect><path d="M1 6h16M5 2v4M13 2v4"></path></svg>
+        لوحة العمليات
+      </div>
+      <div class="sb-item" data-sec="sec-dir-requests" onclick="showSection('director','sec-dir-requests',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M3 5h12M3 13h8"></path></svg>
+        طلبات الاجتماعات
+        <span class="sb-badge red">7</span>
+      </div>
+      <div class="sb-item" data-sec="sec-dir-comms" onclick="showSection('director','sec-dir-comms',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h14M2 9h10M2 14h7"></path></svg>
+        طلبات الاتصال
+        <span class="sb-badge red">2</span>
+      </div>
+      <div class="sb-item" data-sec="sec-dir-exec-actions" onclick="showSection('director','sec-dir-exec-actions',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="7"></circle><path d="M9 5v4l3 2"></path></svg>
+        إجراءات المعالي
+        <span class="sb-badge red">3</span>
+      </div>
+      <div class="sb-group-label" style="margin-top:14px;">إدارة الاجتماعات</div>
+      <div class="sb-item" data-sec="sec-dir-meetings-mgmt" onclick="showSection('director','sec-dir-meetings-mgmt',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="16" height="12" rx="2"/><path d="M5 3V1M13 3V1M1 7h16"/><circle cx="6" cy="12" r="1.5"/><path d="M10 12h5"/></svg>
+        إنشاء وإدارة الاجتماعات
+      </div>
+      <div class="sb-item" data-sec="sec-dir-mom" onclick="showSection('director','sec-dir-mom',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2h10a1 1 0 011 1v13a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M6 7h6M6 10h6M6 13h4"/></svg>
+        محاضر الاجتماعات
+        <span class="sb-badge" style="background:var(--amber-bg);color:var(--amber-mid);border:1px solid #DEB86A;">2</span>
+      </div>
+      <div class="sb-item" data-sec="sec-dir-tasks" onclick="showSection('director','sec-dir-tasks',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9l3 3 7-7"/><rect x="1" y="1" width="16" height="16" rx="3"/></svg>
+        المهام والمتابعة
+        <span class="sb-badge" style="background:var(--green-bg);color:var(--green-mid);border:1px solid #9ACDB4;" id="tasks-badge">8</span>
+      </div>
+      </nav>
+    <div class="sb-user">
+      <div class="sb-avatar" style="background:linear-gradient(135deg,#2468C4,#0B2E56);">ت</div>
+      <div><div class="sb-user-name">تركي بن عتيق</div><div class="sb-user-role">سكرتير المكتب</div></div>
+      <div class="sb-online-dot"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <div class="header-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="header-title-col">
+        <div class="header-name">لوحة عمليات مكتب المعالي</div>
+        <div class="header-role">إدارة الطلبات · التنسيق التنفيذي · متابعة الإجراءات</div>
+      </div>
+      <div class="header-right">
+        <div>
+          <div class="header-date-gregorian js-date">الخميس، ٢ أبريل ٢٠٢٦</div>
+          <div class="header-date-hijri js-hijri">١٤ شوال ١٤٤٧هـ</div>
+        </div>
+        <div class="header-separator"></div>
+        <div class="header-icon-btn">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="#4A6080" stroke-width="1.8"><path d="M10 2a6 6 0 00-6 6c0 3.5-1.5 5-1.5 5h15S16 11.5 16 8a6 6 0 00-6-6z"></path><path d="M8.5 17a1.5 1.5 0 003 0"></path></svg>
+          <span class="header-notif-dot"></span>
+        </div>
+        <div class="header-avatar" style="background:linear-gradient(135deg,#0B2E56,#2468C4);">ت</div>
+      </div>
+    </header>
+
+    <!-- ── DIR: OPERATIONS DASHBOARD ── -->
+    <div id="sec-dir-dash" class="page-body dir-section">
+      <div class="kpi-row kpi-row-4 anim-1">
+        <div class="kpi-card" onclick="showSection('director','sec-dir-requests',getNavItem('director','sec-dir-requests'))">
+          <div class="kpi-accent-bar" style="background:var(--blue-mid);"></div>
+          <div class="kpi-label">طلبات اجتماع جديدة</div>
+          <div class="kpi-value" style="color:var(--blue-mid);">7</div>
+          <div class="kpi-sub">٣ منها <b>عالية الأولوية</b></div>
+        </div>
+        <div class="kpi-card" onclick="showSection('director','sec-dir-comms',getNavItem('director','sec-dir-comms'))">
+          <div class="kpi-accent-bar" style="background:var(--purple);"></div>
+          <div class="kpi-label">طلبات اتصال</div>
+          <div class="kpi-value" style="color:var(--purple);">2</div>
+          <div class="kpi-sub">بانتظار قرار المعالي</div>
+        </div>
+        <div class="kpi-card" onclick="showSection('director','sec-dir-exec-actions',getNavItem('director','sec-dir-exec-actions'))">
+          <div class="kpi-accent-bar" style="background:var(--red-mid);"></div>
+          <div class="kpi-label">إجراءات المعالي</div>
+          <div class="kpi-value" style="color:var(--red-mid);">3</div>
+          <div class="kpi-sub">إلغاء ×١ · إعادة جدولة ×٢</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-accent-bar" style="background:var(--green-mid);"></div>
+          <div class="kpi-label">مهام التنسيق</div>
+          <div class="kpi-value" style="color:var(--green-mid);">5</div>
+          <div class="kpi-sub">٣ مكتملة · ٢ جارية</div>
+        </div>
+      </div>
+
+      <!-- Quick summary grid -->
+      <div class="grid-2 anim-2">
+        <div class="sc">
+          <div class="sc-head">
+            <div class="sc-head-left"><span class="sc-head-dot" style="background:var(--blue-mid);"></span><span class="sc-head-title">آخر طلبات الاجتماع</span></div>
+            <span class="sc-head-link" onclick="showSection('director','sec-dir-requests',getNavItem('director','sec-dir-requests'))">عرض الكل ←</span>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>الموضوع</th><th>الجهة</th><th>التاريخ</th><th>الأولوية</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">مناقشة نظام التعريفة المائية</td><td style="font-size:12px;color:var(--muted);">الشؤون التنظيمية</td><td style="font-size:12px;">٢ أبريل</td><td><span class="pill high">عاجل</span></td></tr>
+              <tr><td class="bold">عرض نتائج مشروع تحلية الجبيل</td><td style="font-size:12px;color:var(--muted);">قطاع البنية التحتية</td><td style="font-size:12px;">٥ أبريل</td><td><span class="pill high">عاجل</span></td></tr>
+              <tr><td class="bold">لقاء مع الوفد الكوري</td><td style="font-size:12px;color:var(--muted);">العلاقات الدولية</td><td style="font-size:12px;">١٠ أبريل</td><td><span class="pill high">عاجل</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sc">
+          <div class="sc-head">
+            <div class="sc-head-left"><span class="sc-head-dot" style="background:var(--green-mid);"></span><span class="sc-head-title">نشاط التواصل</span></div>
+          </div>
+          <div class="feed-row"><div class="feed-icon" style="background:var(--blue-pale);">📩</div><div class="feed-text">تم إشعار <b>٧ حضور</b> بإلغاء اجتماع لجنة الموارد المائية</div><div class="feed-time">منذ ٥ د</div></div>
+          <div class="feed-row"><div class="feed-icon" style="background:var(--green-bg);">✓</div><div class="feed-text">أُبلغت <b>الشؤون التنظيمية</b> بقبول طلب اجتماع التعريفة</div><div class="feed-time">منذ ٢٨ د</div></div>
+          <div class="feed-row"><div class="feed-icon" style="background:var(--purple-bg);">⟳</div><div class="feed-text">تم تحديث دعوة اجتماع <b>مؤشرات الأداء</b> بالموعد الجديد</div><div class="feed-time">منذ ٤٥ د</div></div>
+          <div class="feed-row"><div class="feed-icon" style="background:var(--amber-bg);">🏛</div><div class="feed-text">أُبلغ <b>م. ذيب القحطاني</b> بأن طلبه قيد المراجعة</div><div class="feed-time">منذ ١ س</div></div>
+        </div>
+      </div>
+    </div><!-- /sec-dir-dash -->
+
+
+    <!-- ── DIR: MEETING REQUESTS ── -->
+    <div id="sec-dir-requests" class="page-body dir-section" style="display:none;">
+      <div class="section-label">
+        <div class="section-label-left"><div class="section-bar" style="background:var(--blue-mid);"></div><span class="section-title">طلبات الاجتماع الواردة</span><span class="section-count">٧ طلبات</span></div>
+        <button class="btn btn-sm btn-add" onclick="openNewMeetingForm()">+ طلب جديد</button>
+      </div>
+      <div class="sc">
+        <table class="data-table">
+          <thead><tr><th>الاجتماع / الجهة</th><th>التاريخ</th><th>الأولوية</th><th>الطالب</th><th>إجراء</th></tr></thead>
+          <tbody>
+            <tr><td class="bold"><div>مناقشة نظام التعريفة المائية</div><div style="font-size:11px;color:var(--muted);">الشؤون التنظيمية</div></td><td style="font-size:12px;">٢ أبريل</td><td><span class="pill high">عاجل</span></td><td style="font-size:12px;">م. خالد الرشيد</td><td><button class="btn btn-sm btn-add">مراجعة</button></td></tr>
+            <tr><td class="bold"><div>عرض نتائج مشروع تحلية الجبيل</div><div style="font-size:11px;color:var(--muted);">قطاع البنية التحتية</div></td><td style="font-size:12px;">٥ أبريل</td><td><span class="pill high">عاجل</span></td><td style="font-size:12px;">م. نورة السالم</td><td><button class="btn btn-sm btn-add">مراجعة</button></td></tr>
+            <tr><td class="bold"><div>متابعة عقود الصيانة Q2</div><div style="font-size:11px;color:var(--muted);">إدارة العقود</div></td><td style="font-size:12px;">٧ أبريل</td><td><span class="pill medium">متوسط</span></td><td style="font-size:12px;">أ. عبدالعزيز الغامدي</td><td><button class="btn btn-sm">انتظار</button></td></tr>
+            <tr><td class="bold"><div>لقاء مع الوفد الكوري لتقنيات المياه</div><div style="font-size:11px;color:var(--muted);">العلاقات الدولية</div></td><td style="font-size:12px;">١٠ أبريل</td><td><span class="pill high">عاجل</span></td><td style="font-size:12px;">م. ذيب القحطاني</td><td><button class="btn btn-sm btn-add">مراجعة</button></td></tr>
+            <tr><td class="bold"><div>استعراض خطط التوسع الإقليمي</div><div style="font-size:11px;color:var(--muted);">الاستراتيجية والتخطيط</div></td><td style="font-size:12px;">١٢ أبريل</td><td><span class="pill medium">متوسط</span></td><td style="font-size:12px;">م. سالم الغامدي</td><td><button class="btn btn-sm">انتظار</button></td></tr>
+            <tr><td class="bold"><div>مراجعة تقرير الجودة الفصلي</div><div style="font-size:11px;color:var(--muted);">الجودة والرقابة</div></td><td style="font-size:12px;">١٤ أبريل</td><td><span class="pill">عادي</span></td><td style="font-size:12px;">م. ريم الحارثي</td><td><button class="btn btn-sm">انتظار</button></td></tr>
+            <tr><td class="bold"><div>تقييم أداء البنية التحتية</div><div style="font-size:11px;color:var(--muted);">قطاع الهندسة</div></td><td style="font-size:12px;">١٦ أبريل</td><td><span class="pill">عادي</span></td><td style="font-size:12px;">م. بندر الزهراني</td><td><button class="btn btn-sm">انتظار</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Reschedule Tracker -->
+      <div class="section-label" style="margin-top:20px;">
+        <div class="section-label-left"><div class="section-bar" style="background:var(--amber-mid);"></div><span class="section-title">إعادة الجدولة والمتابعة</span><span class="section-count">٣ اجتماعات</span></div>
+      </div>
+      <div class="sc">
+        <div class="rs-row"><div class="rs-top"><span class="rs-title">مناقشة مؤشرات الأداء الربعي — Q1 2026</span><span class="pill pending">جارٍ التنسيق</span></div><div class="progress-wrap"><div class="progress-track"><div class="progress-fill pf-blue" style="width:55%;"></div></div><span class="progress-pct">٥٥٪</span></div><div class="rs-meta"><span>📅 ٢ أبريل</span><span>👥 ٩ مدعوون · ٦ ردوا</span><span>📍 طاولة مكتب المعالي</span></div></div>
+        <div class="rs-row"><div class="rs-top"><span class="rs-title">استعراض خطة التوسع في مشاريع نقل المياه</span><span class="pill modified">بانتظار التأكيد</span></div><div class="progress-wrap"><div class="progress-track"><div class="progress-fill pf-amber" style="width:30%;"></div></div><span class="progress-pct">٣٠٪</span></div><div class="rs-meta"><span>📅 ٧ أبريل</span><span>👥 ١٢ مدعوون · ٤ ردوا</span><span>📍 قاعة المركز التنفيذي</span></div></div>
+        <div class="rs-row"><div class="rs-top"><span class="rs-title">اجتماع لجنة الموارد المائية الإقليمية</span><span class="pill confirmed">اكتمل التنسيق</span></div><div class="progress-wrap"><div class="progress-track"><div class="progress-fill pf-green" style="width:100%;"></div></div><span class="progress-pct">١٠٠٪</span></div><div class="rs-meta"><span>📅 ٦ أبريل</span><span>👥 ٧ مدعوون · تم إشعارهم</span><span>📍 قاعة اجتماعات المعالي</span></div></div>
+      </div>
+    </div><!-- /sec-dir-requests -->
+
+
+    <!-- ── DIR: COMMUNICATIONS ── -->
+    <div id="sec-dir-comms" class="page-body dir-section" style="display:none;">
+      <div class="section-label">
+        <div class="section-label-left"><div class="section-bar" style="background:var(--purple);"></div><span class="section-title">طلبات الاتصال اليومية</span><span class="section-count">٢ طلبات</span></div>
+        <button class="btn btn-sm" style="background:var(--purple-bg);border-color:#A898D4;color:var(--purple);" onclick="openNewCommForm()">+ طلب اتصال جديد</button>
+      </div>
+      <div class="sc">
+        <table class="data-table">
+          <thead><tr><th>مقدّم الطلب</th><th>المنصب / الجهة</th><th>الموضوع</th><th>الأولوية</th><th>الحالة</th><th>إجراء</th></tr></thead>
+          <tbody>
+            <tr><td class="bold">م. عبدالعزيز فهد الحصان</td><td style="font-size:12px;color:var(--muted);">المدير التنفيذي للشؤون المالية</td><td>مراجعة ميزانية المشاريع الرأسمالية — الربع الثاني</td><td><span class="pill high">عاجل</span></td><td><span class="pill pending">بانتظار القرار</span></td><td><button class="btn btn-sm">تفاصيل</button></td></tr>
+            <tr><td class="bold">م. ذيب القحطاني</td><td style="font-size:12px;color:var(--muted);">مدير عام الشراكات الإستراتيجية</td><td>برنامج الزيارة الميدانية للوفد الكوري</td><td><span class="pill medium">متوسط</span></td><td><span class="pill pending">بانتظار القرار</span></td><td><button class="btn btn-sm">تفاصيل</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sc" style="margin-top:16px;">
+        <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--green-mid);"></span><span class="sc-head-title">تعارضات الجدول</span><span class="sc-head-count">٢</span></div></div>
+        <div class="conflict-row"><div class="conflict-icon red">🏛</div><div class="conflict-info"><div class="conflict-title">تعارض قاعة — قاعة اجتماعات المعالي</div><div class="conflict-detail">مجلسان في نفس القاعة — ١١:٠٠ ص · ٢ أبريل</div></div><span class="pill high" style="flex-shrink:0;margin-left:8px;">عاجل</span><button class="resolve-btn" style="margin-right:8px;">حل</button></div>
+        <div class="conflict-row"><div class="conflict-icon amber">⏱</div><div class="conflict-info"><div class="conflict-title">تعارض زمني — معالي الرئيس</div><div class="conflict-detail">طلبان يتزاحمان على ٩–١١ ص · ٥ أبريل</div></div><span class="pill medium" style="flex-shrink:0;margin-left:8px;">تحذير</span><button class="resolve-btn" style="margin-right:8px;">ترتيب</button></div>
+      </div>
+    </div><!-- /sec-dir-comms -->
+
+
+    <!-- ── DIR: EXECUTIVE ACTIONS ── -->
+    <div id="sec-dir-exec-actions" class="page-body dir-section" style="display:none;">
+      <div class="section-label">
+        <div class="section-label-left"><div class="section-bar" style="background:var(--red-mid);"></div><span class="section-title">إجراءات معالي الرئيس</span><span class="section-count">٣ إجراءات تحتاج متابعة</span></div>
+      </div>
+      <div class="sc">
+        <div class="exec-queue-row"><div class="urgency-pip high"></div><span class="exec-type-pill cancel">إلغاء</span><div class="exec-info"><div class="exec-meeting-name">اجتماع لجنة الموارد المائية الإقليمية</div><div class="exec-meta">كان مقرراً اليوم ٩:٠٠ ص · منذ ساعة</div></div><span class="next-action-chip">إشعار الحضور</span></div>
+        <div class="exec-queue-row"><div class="urgency-pip high"></div><span class="exec-type-pill reschedule">إعادة جدولة</span><div class="exec-info"><div class="exec-meeting-name">مناقشة مؤشرات الأداء الربعي</div><div class="exec-meta">مؤجل من ١:٠٠ م · يحتاج موعداً بديلاً</div></div><span class="next-action-chip">تحديد موعد</span></div>
+        <div class="exec-queue-row"><div class="urgency-pip medium"></div><span class="exec-type-pill reschedule">إعادة جدولة</span><div class="exec-info"><div class="exec-meeting-name">استعراض خطة التوسع في نقل المياه</div><div class="exec-meta">مؤجل من ٣١ مارس · طلب إعادة الجدولة</div></div><span class="next-action-chip">تنسيق بديل</span></div>
+      </div>
+    </div><!-- /sec-dir-exec-actions -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         SEC: إنشاء وإدارة الاجتماعات
+    ══════════════════════════════════════════════════════ -->
+    <div id="sec-dir-meetings-mgmt" class="page-body dir-section" style="display:none;">
+
+      <div class="section-label">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--blue-mid);"></div>
+          <span class="section-title">إدارة الاجتماعات</span>
+          <span class="section-count" id="mgmt-count">٦ اجتماعات</span>
+        </div>
+        <button class="btn btn-sm btn-add" onclick="openMeetingMgmtModal()">+ اجتماع جديد</button>
+      </div>
+
+      <!-- Search & Filter bar -->
+      <div class="dir-filter-bar">
+        <div class="dir-search-wrap">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7.5" cy="7.5" r="5"/><path d="M13 13l2.5 2.5"/></svg>
+          <input class="dir-search-input" id="mgmt-search" placeholder="بحث بالعنوان أو الجهة..." oninput="filterMeetingsMgmt()">
+        </div>
+        <div class="dir-filter-tabs">
+          <button class="dir-filter-tab active" onclick="setMgmtFilter('all',this)">الكل</button>
+          <button class="dir-filter-tab" onclick="setMgmtFilter('upcoming',this)">قادمة</button>
+          <button class="dir-filter-tab" onclick="setMgmtFilter('past',this)">منتهية</button>
+        </div>
+        <div class="dir-sort-wrap">
+          <select class="dir-sort-select" onchange="sortMeetingsMgmt(this.value)">
+            <option value="date">ترتيب: التاريخ</option>
+            <option value="priority">ترتيب: الأولوية</option>
+            <option value="title">ترتيب: العنوان</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Meetings list -->
+      <div id="meetings-mgmt-list">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div><!-- /sec-dir-meetings-mgmt -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         SEC: محاضر الاجتماعات (MoM)
+    ══════════════════════════════════════════════════════ -->
+    <div id="sec-dir-mom" class="page-body dir-section" style="display:none;">
+
+      <div class="section-label">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--amber-mid);"></div>
+          <span class="section-title">محاضر الاجتماعات</span>
+          <span class="section-count">٣ محاضر</span>
+        </div>
+        <button class="btn btn-sm btn-add" onclick="openMomModal()">+ محضر جديد</button>
+      </div>
+
+      <!-- MoM cards -->
+      <div id="mom-list">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div><!-- /sec-dir-mom -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         SEC: المهام والمتابعة
+    ══════════════════════════════════════════════════════ -->
+    <div id="sec-dir-tasks" class="page-body dir-section" style="display:none;">
+
+      <div class="section-label">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--green-mid);"></div>
+          <span class="section-title">المهام والمتابعة</span>
+          <span class="section-count" id="tasks-section-count"></span>
+        </div>
+        <button class="btn btn-sm btn-add" onclick="openTaskModal()">+ مهمة جديدة</button>
+      </div>
+
+      <!-- Task stats -->
+      <div class="kpi-row kpi-row-3 anim-1" style="margin-bottom:20px;">
+        <div class="kpi-card" style="cursor:default;">
+          <div class="kpi-accent-bar" style="background:var(--amber-mid);"></div>
+          <div class="kpi-label">معلقة</div>
+          <div class="kpi-value" id="tasks-pending-count" style="color:var(--amber-mid);">٥</div>
+          <div class="kpi-sub">تحتاج متابعة</div>
+        </div>
+        <div class="kpi-card" style="cursor:default;">
+          <div class="kpi-accent-bar" style="background:var(--green-mid);"></div>
+          <div class="kpi-label">مكتملة</div>
+          <div class="kpi-value" id="tasks-done-count" style="color:var(--green-mid);">٣</div>
+          <div class="kpi-sub">هذا الأسبوع</div>
+        </div>
+        <div class="kpi-card" style="cursor:default;">
+          <div class="kpi-accent-bar" style="background:var(--red-mid);"></div>
+          <div class="kpi-label">متأخرة</div>
+          <div class="kpi-value" id="tasks-overdue-count" style="color:var(--red-mid);">٠</div>
+          <div class="kpi-sub">تجاوزت الموعد</div>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="dir-filter-bar" style="margin-bottom:16px;">
+        <div class="dir-filter-tabs">
+          <button class="dir-filter-tab active" onclick="setTaskFilter('all',this)">الكل</button>
+          <button class="dir-filter-tab" onclick="setTaskFilter('pending',this)">معلقة</button>
+          <button class="dir-filter-tab" onclick="setTaskFilter('done',this)">مكتملة</button>
+          <button class="dir-filter-tab" onclick="setTaskFilter('overdue',this)">متأخرة</button>
+        </div>
+      </div>
+
+      <!-- Tasks list -->
+      <div id="tasks-list">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div><!-- /sec-dir-tasks -->
+
+
+  </main>
+</div><!-- /screen-director -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  SCREEN 3 — EMPLOYEE  ████                              ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="screen" id="screen-employee">
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div>
+        <div class="sb-org-arabic">الهيئة السعودية للمياه</div>
+        <div class="sb-org-english">Saudi Water Authority</div>
+      </div>
+    </div>
+    <div class="sb-system"><span class="sb-system-pill">UMMS</span><span class="sb-system-sub">بوابة الموظف</span></div>
+    <nav class="sb-nav">
+      <div class="sb-group-label">بوابة الموظف</div>
+      <div class="sb-item active">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="2" width="16" height="13" rx="2"></rect><path d="M1 6h16M5 2v4M13 2v4"></path></svg>
+        لوحتي
+      </div>
+      <div class="sb-item">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2v14M2 9h14"></path></svg>
+        طلب اجتماع جديد
+      </div>
+      <div class="sb-item">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M3 5h12M3 13h8"></path></svg>
+        طلباتي
+        <span class="sb-badge blue">3</span>
+      </div>
+    </nav>
+    <div class="sb-user">
+      <div class="sb-avatar" style="background:linear-gradient(135deg,#186648,#1E8A5E);">ن</div>
+      <div><div class="sb-user-name">نورة السالم</div><div class="sb-user-role">مديرة · قطاع البنية التحتية</div></div>
+      <div class="sb-online-dot"></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="header">
+      <div class="header-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="header-title-col">
+        <div class="header-name">بوابة الموظف</div>
+        <div class="header-role">تقديم طلبات الاجتماع · متابعة الحالة · الإشعارات</div>
+      </div>
+      <div class="header-right">
+        <div>
+          <div class="header-date-gregorian js-date">الخميس، ٢ أبريل ٢٠٢٦</div>
+          <div class="header-date-hijri js-hijri">١٤ شوال ١٤٤٧هـ</div>
+        </div>
+        <div class="header-separator"></div>
+        <div class="header-icon-btn">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="#4A6080" stroke-width="1.8"><path d="M10 2a6 6 0 00-6 6c0 3.5-1.5 5-1.5 5h15S16 11.5 16 8a6 6 0 00-6-6z"></path><path d="M8.5 17a1.5 1.5 0 003 0"></path></svg>
+          <span class="header-notif-dot"></span>
+        </div>
+        <div class="header-avatar" style="background:linear-gradient(135deg,#186648,#1E8A5E);">ن</div>
+      </div>
+    </header>
+    <div class="page-body">
+      <div class="kpi-row kpi-row-4 anim-1">
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--blue-mid);"></div><div class="kpi-label">طلباتي هذا الشهر</div><div class="kpi-value" style="color:var(--blue-mid);">3</div><div class="kpi-sub">اجتماعات مقدّمة</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--amber-mid);"></div><div class="kpi-label">قيد المراجعة</div><div class="kpi-value" style="color:var(--amber-mid);">1</div><div class="kpi-sub">بانتظار موافقة المكتب</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--green-mid);"></div><div class="kpi-label">مؤكدة</div><div class="kpi-value" style="color:var(--green-mid);">1</div><div class="kpi-sub">مجدولة بنجاح</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--navy);"></div><div class="kpi-label">اجتماعاتي القادمة</div><div class="kpi-value" style="color:var(--navy);">2</div><div class="kpi-sub">هذا الأسبوع</div></div>
+      </div>
+      <div class="grid-wide anim-2">
+        <div class="sc">
+          <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--blue-mid);"></span><span class="sc-head-title">تقديم طلب اجتماع جديد</span></div></div>
+          <div class="form-section">
+            <div class="form-group"><label class="form-label"><span class="required">*</span>موضوع الاجتماع</label><input class="form-input" type="text" placeholder="أدخل موضوع الاجتماع بوضوح ودقة"></div>
+            <div class="form-row-3"><div class="form-group"><label class="form-label"><span class="required">*</span>التاريخ المقترح</label><input class="form-input" type="date" id="emp-date"></div><div class="form-group"><label class="form-label"><span class="required">*</span>الوقت</label><select class="form-input"><option>٩:٠٠ ص</option><option>١٠:٠٠ ص</option><option selected="">١١:٠٠ ص</option><option>١٢:٠٠ م</option><option>١:٠٠ م</option><option>٢:٠٠ م</option><option>٣:٠٠ م</option></select></div><div class="form-group"><label class="form-label"><span class="required">*</span>المدة</label><select class="form-input"><option>٣٠ دقيقة</option><option selected="">٦٠ دقيقة</option><option>٩٠ دقيقة</option><option>١٢٠ دقيقة</option></select></div></div>
+            <div class="form-row-2"><div class="form-group"><label class="form-label"><span class="required">*</span>الأولوية</label><select class="form-input"><option>عادي</option><option selected="">متوسط</option><option>عاجل</option></select></div><div class="form-group"><label class="form-label">نوع الاجتماع</label><select class="form-input"><option selected="">حضوري</option><option>عن بُعد (webex)</option><option>هجين</option></select></div></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span>الجهة الطالبة</label><input class="form-input readonly" value="قطاع البنية التحتية للمياه" readonly=""></div>
+            <div class="form-group"><label class="form-label"><span class="required">*</span>ملخص الهدف</label><textarea class="form-input" placeholder="صِف بإيجاز الهدف الرئيسي ومحاور النقاش المطلوبة..."></textarea></div>
+          </div>
+          <div class="form-footer"><button class="btn btn-ghost">حفظ كمسودة</button><button class="btn btn-primary" onclick="submitEmployeeRequest()">إرسال الطلب ←</button></div>
+        </div>
+        <div class="flex-col">
+          <div class="sc">
+            <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--blue-mid);"></span><span class="sc-head-title">متابعة آخر طلب</span></div></div>
+            <div style="padding:16px 20px 10px;">
+              <div style="font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:2px;">عرض نتائج مشروع محطة تحلية الجبيل</div>
+              <div style="font-size:11.5px;color:var(--muted);margin-bottom:14px;">قُدِّم: ٢٨ مارس ٢٠٢٦ · مدة مقترحة: ٦٠ دقيقة · ٥ أبريل</div>
+              <div class="timeline">
+                <div class="timeline-row"><div class="timeline-dot done">✓</div><div><div class="timeline-title">تم الاستلام</div><div class="timeline-sub">٢٨ مارس ٢٠٢٦ — ٩:١٤ ص</div></div></div>
+                <div class="timeline-row"><div class="timeline-dot done">✓</div><div><div class="timeline-title">قيد المراجعة من مكتب المعالي</div><div class="timeline-sub">٢٩ مارس — ١١:٣٠ ص</div></div></div>
+                <div class="timeline-row"><div class="timeline-dot active" style="font-size:7px;">●</div><div><div class="timeline-title current">جارٍ تنسيق الموعد النهائي</div><div class="timeline-sub">المرحلة الحالية</div></div></div>
+                <div class="timeline-row"><div class="timeline-dot pending">4</div><div><div class="timeline-title" style="color:var(--muted);">إشعار بتأكيد الموعد</div></div></div>
+                <div class="timeline-row"><div class="timeline-dot pending">5</div><div><div class="timeline-title" style="color:var(--muted);">الاجتماع مؤكد</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--amber-mid);"></span><span class="sc-head-title">إشعاراتي</span><span class="sc-head-count">٣</span></div></div>
+            <div class="notif-row"><div class="notif-pip" style="background:var(--blue-mid);"></div><div class="notif-body"><div class="notif-title">طلبك قيد التنسيق</div><div class="notif-text">تم استلام طلب اجتماع عرض نتائج مشروع تحلية الجبيل وهو قيد التنسيق.</div></div><span class="notif-time">منذ ١ س</span></div>
+            <div class="notif-row"><div class="notif-pip" style="background:var(--green-mid);"></div><div class="notif-body"><div class="notif-title">اجتماعك مؤكد</div><div class="notif-text">مراجعة ميزانية المشاريع · الخميس ٢ أبريل ١١:٠٠ ص.</div></div><span class="notif-time">أمس</span></div>
+            <div class="notif-row"><div class="notif-pip" style="background:var(--amber-mid);"></div><div class="notif-body"><div class="notif-title">تذكير: اجتماع غداً</div><div class="notif-text">اجتماع قاعة المركز التنفيذي — الساعة ١٠:٠٠ ص.</div></div><span class="notif-time">منذ ٣ س</span></div>
+          </div>
+          <div class="sc">
+            <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--navy);"></span><span class="sc-head-title">سجل طلباتي</span></div></div>
+            <table class="data-table"><thead><tr><th>الموضوع</th><th>التاريخ</th><th>الحالة</th></tr></thead><tbody>
+              <tr><td class="bold">عرض نتائج مشروع تحلية الجبيل</td><td style="font-size:12px;">٥ أبريل</td><td><span class="pill pending">قيد التنسيق</span></td></tr>
+              <tr><td class="bold">مراجعة ميزانية المشاريع</td><td style="font-size:12px;">٢ أبريل</td><td><span class="pill confirmed">مؤكد</span></td></tr>
+              <tr><td class="bold">إيجاز خط نقل المياه الغربي</td><td style="font-size:12px;">٢٠ مارس</td><td><span class="pill done">مكتمل</span></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div><!-- /screen-employee -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  SCREEN 4 — ADMIN  ████                                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="screen" id="screen-admin">
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div>
+        <div class="sb-org-arabic">الهيئة السعودية للمياه</div>
+        <div class="sb-org-english">Saudi Water Authority</div>
+      </div>
+    </div>
+    <div class="sb-system"><span class="sb-system-pill">UMMS</span><span class="sb-system-sub">إدارة النظام</span></div>
+    <nav class="sb-nav">
+      <div class="sb-group-label">النظام</div>
+      <div class="sb-item active"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="2" width="16" height="13" rx="2"></rect><path d="M1 6h16M5 2v4M13 2v4"></path></svg>لوحة التحكم</div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 11c0-2.5 2-4 5-4s5 1.5 5 4"></path><circle cx="7" cy="5" r="2.5"></circle><path d="M13 7v7M16 10h-6"></path></svg>إدارة المستخدمين<span class="sb-badge amber">147</span></div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z"></path></svg>الصلاحيات والأدوار</div>
+      <div class="sb-group-label">الرقابة</div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14V6l7-4 7 4v8H2z"></path><path d="M6 14V9h6v5"></path></svg>سجل التدقيق</div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="7"></circle><path d="M9 6v4M9 12v.5"></path></svg>صحة النظام</div>
+      <div class="sb-group-label">الإعدادات</div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="3"></circle><path d="M9 1v2M9 15v2M1 9h2M15 9h2"></path></svg>إعدادات النظام</div>
+      <div class="sb-item"><svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h12v10H3zM7 4V2h4v2"></path></svg>قواعد الإشعارات</div>
+      <div class="sb-group-label">التشغيل اليومي</div>
+      <div class="sb-item" data-sec="sec-adm-trcs" onclick="showSection('admin','sec-adm-trcs',this)">
+        <svg class="sb-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 3h14v12H2z"/><path d="M6 7h6M6 10h4"/></svg>
+        الجاهزية التشغيلية اليومية
+        <span class="sb-badge teal">مسؤول النظام</span>
+      </div>
+        </nav>
+    <div class="sb-user">
+      <div class="sb-avatar" style="background:linear-gradient(135deg,#553899,#7B5EC8);">ت</div>
+      <div><div class="sb-user-name">تركي الغامدي</div><div class="sb-user-role">مسؤول النظام</div></div>
+      <div class="sb-online-dot"></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="header">
+      <div class="header-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="header-title-col">
+        <div class="header-name">لوحة إدارة النظام</div>
+        <div class="header-role">المستخدمون · الصلاحيات · التدقيق · صحة النظام</div>
+      </div>
+      <div class="header-right">
+        <div>
+          <div class="header-date-gregorian js-date">الخميس، ٢ أبريل ٢٠٢٦</div>
+          <div class="header-date-hijri js-hijri">١٤ شوال ١٤٤٧هـ</div>
+        </div>
+        <div class="header-separator"></div>
+        <div class="header-icon-btn">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="#4A6080" stroke-width="1.8"><path d="M10 2a6 6 0 00-6 6c0 3.5-1.5 5-1.5 5h15S16 11.5 16 8a6 6 0 00-6-6z"></path><path d="M8.5 17a1.5 1.5 0 003 0"></path></svg>
+          <span class="header-notif-dot"></span>
+        </div>
+        <div class="header-avatar" style="background:linear-gradient(135deg,#553899,#7B5EC8);">ي</div>
+      </div>
+    </header>
+    <div class="page-body">
+      <div class="kpi-row kpi-row-4 anim-1">
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--blue-mid);"></div><div class="kpi-label">إجمالي المستخدمين</div><div class="kpi-value" style="color:var(--blue-mid);">147</div><div class="kpi-sub">٤ أدوار · ١٢ إدارة</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--green-mid);"></div><div class="kpi-label">اجتماعات هذا الشهر</div><div class="kpi-value" style="color:var(--green-mid);">38</div><div class="kpi-sub">٣٢ مكتملة · ٦ قادمة</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--teal);"></div><div class="kpi-label">صحة النظام</div><div class="kpi-value" style="font-size:15px;margin-top:6px;color:var(--green-mid);">● جميع الخدمات تعمل</div><div class="kpi-sub">آخر فحص: منذ ١٢ دقيقة</div></div>
+        <div class="kpi-card"><div class="kpi-accent-bar" style="background:var(--amber-mid);"></div><div class="kpi-label">طلبات معلقة</div><div class="kpi-value" style="color:var(--amber-mid);">11</div><div class="kpi-sub">٧ اجتماعات · ٢ اتصالات</div></div>
+      </div>
+      <div class="grid-2 anim-2">
+        <div class="sc">
+          <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--blue-mid);"></span><span class="sc-head-title">إدارة المستخدمين</span></div><button class="btn btn-sm btn-add">+ إضافة</button></div>
+          <div class="user-list-group">معالي الرئيس</div>
+          <div class="user-row"><div class="user-avatar" style="background:linear-gradient(135deg,#1550A0,#3B82D4);">ع</div><div class="user-info"><div class="user-name">عبدالله العبدالكريم</div><div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7c6c5c3d2cbcbc6cf89c6c5c3d2cbccc6d5cecae7d4d0c689c0c8d189d4c6">[email&#160;protected]</a></div></div><span class="pill modified" style="font-size:9px;flex-shrink:0;">معالي الرئيس</span><button class="btn btn-sm btn-ghost" style="margin-right:8px;">عرض</button></div>
+          <div class="user-list-group">سكرتارية المكتب</div>
+          <div class="user-row"><div class="user-avatar" style="background:linear-gradient(135deg,#2468C4,#0B2E56);">ت</div><div class="user-info"><div class="user-name">تركي بن عتيق</div><div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="572322253c3e79363b362332261724203679303821792436">[email&#160;protected]</a></div></div><span class="pill pending" style="font-size:9px;flex-shrink:0;">سكرتير المكتب</span><button class="btn btn-sm btn-ghost" style="margin-right:8px;">تعديل</button></div>
+          <div class="user-row"><div class="user-avatar" style="background:linear-gradient(135deg,#2468C4,#0B2E56);">م</div><div class="user-info"><div class="user-name">مشعل بن سعيد</div><div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b464e58434a4705494245584a4e4e4f6b585c4a054c445d05584a">[email&#160;protected]</a></div></div><span class="pill pending" style="font-size:9px;flex-shrink:0;">سكرتير المكتب</span><button class="btn btn-sm btn-ghost" style="margin-right:8px;">تعديل</button></div>
+          <div class="user-list-group">مسؤولو النظام</div>
+          <div class="user-row"><div class="user-avatar" style="background:linear-gradient(135deg,#553899,#7B5EC8);">ت</div><div class="user-info"><div class="user-name">تركي الغامدي </div><div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f881d69994929182999691b88b8f99d69f978ed68b99">[email&#160;protected]</a></div></div><span class="pill purple" style="font-size:9px;flex-shrink:0;">مسؤول النظام</span><button class="btn btn-sm btn-ghost" style="margin-right:8px;">عرض</button></div>
+        </div>
+        <div class="sc">
+          <div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--purple);"></span><span class="sc-head-title">الصلاحيات والأدوار</span></div></div>
+          <div style="padding:14px 18px;">
+            <div class="perm-block"><div class="perm-head" style="background:var(--amber-bg);border-bottom-color:#DEB86A;"><span class="perm-role-name" style="color:#7A4800;">معالي الرئيس</span><span class="pill modified" style="font-size:9.5px;">١ مستخدم</span></div><div class="perm-body"><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">عرض اجتماعات اليوم</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إعادة جدولة الاجتماعات</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">عرض الاتصالات اليومية</span></div><div class="toggle-row"><div class="toggle"></div><span class="toggle-label off">جدولة اجتماعات جديدة — معطّل</span></div></div></div>
+            <div class="perm-block"><div class="perm-head" style="background:var(--blue-pale);border-bottom-color:#A8C8E8;"><span class="perm-role-name" style="color:var(--blue-mid);">سكرتير المكتب</span><span class="pill pending" style="font-size:9.5px;">٢ مستخدمين</span></div><div class="perm-body"><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">مراجعة وقبول طلبات الاجتماع</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إنشاء وإرسال طلبات الاتصال</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">الجدولة وإعادة الجدولة</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">الجاهزية التشغيلية اليومية</span></div></div></div>
+            <div class="perm-block"><div class="perm-head" style="background:var(--green-bg);border-bottom-color:#9ACDB4;"><span class="perm-role-name" style="color:var(--green);">الموظفون</span><span class="pill confirmed" style="font-size:9.5px;">١٤٢ مستخدم</span></div><div class="perm-body"><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">تقديم طلبات اجتماع فقط</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">متابعة حالة طلباتهم</span></div><div class="toggle-row"><div class="toggle"></div><span class="toggle-label off">إنشاء طلبات اتصال — معطّل</span></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2 anim-3">
+        <div class="sc"><div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--navy);"></span><span class="sc-head-title">سجل التدقيق الأخير</span></div><span class="sc-head-link">السجل الكامل ←</span></div><table class="data-table"><thead><tr><th>الحدث</th><th>المستخدم</th><th>الدور</th><th>التوقيت</th><th>النتيجة</th></tr></thead><tbody>
+          <tr><td class="bold">إعادة جدولة اجتماع</td><td style="font-size:12px;">عبدالله العبدالكريم</td><td><span class="pill modified" style="font-size:9px;">معالي الرئيس</span></td><td style="font-size:12px;">٩:٠٢ ص</td><td><span class="pill confirmed" style="font-size:9px;">نجح</span></td></tr>
+          <tr><td class="bold">إرسال طلب اتصال</td><td style="font-size:12px;">تركي بن عتيق</td><td><span class="pill pending" style="font-size:9px;">سكرتير المكتب</span></td><td style="font-size:12px;">٨:٥٠ ص</td><td><span class="pill confirmed" style="font-size:9px;">نجح</span></td></tr>
+          <tr><td class="bold">إرسال تقرير الجاهزية</td><td style="font-size:12px;">تركي بن عتيق</td><td><span class="pill pending" style="font-size:9px;">سكرتير المكتب</span></td><td style="font-size:12px;">٨:١٠ ص</td><td><span class="pill confirmed" style="font-size:9px;">نجح</span></td></tr>
+          <tr><td class="bold">إرسال طلب اجتماع</td><td style="font-size:12px;">نورة السالم</td><td><span class="pill confirmed" style="font-size:9px;">موظف</span></td><td style="font-size:12px;">٨:٣٢ ص</td><td><span class="pill confirmed" style="font-size:9px;">نجح</span></td></tr>
+        </tbody></table></div>
+        <div class="flex-col">
+          <div class="sc"><div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--green-mid);"></span><span class="sc-head-title">صحة النظام</span></div></div><div style="padding:13px 20px;"><div class="health-row"><span class="health-service">خوادم التطبيق</span><span class="pill confirmed" style="font-size:9.5px;">● يعمل</span></div><div class="health-row"><span class="health-service">قاعدة البيانات</span><span class="pill confirmed" style="font-size:9.5px;">● يعمل</span></div><div class="health-row"><span class="health-service">خدمة الإشعارات</span><span class="pill confirmed" style="font-size:9.5px;">● يعمل</span></div><div class="health-row"><span class="health-service">تكامل البريد (SSO)</span><span class="pill modified" style="font-size:9.5px;">● تحديث جارٍ</span></div><div style="margin-top:10px;font-size:11px;color:var(--muted);">UMMS v2.5.0 · آخر نسخة احتياطية: اليوم ٦:٠٠ ص</div></div></div>
+          <div class="sc"><div class="sc-head"><div class="sc-head-left"><span class="sc-head-dot" style="background:var(--amber-mid);"></span><span class="sc-head-title">قواعد الإشعارات</span></div></div><div style="padding:12px 20px;"><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إشعار عند تأكيد الاجتماع</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إشعار عند إعادة الجدولة</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">تذكير قبل الاجتماع بـ ٢٤ ساعة</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إشعار لسكرتير المكتب بقرار الاتصال</span></div><div class="toggle-row"><div class="toggle on"></div><span class="toggle-label">إشعار عند تقديم تقرير الجاهزية</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ADMIN: DAILY TECHNICAL READINESS (الجاهزية التشغيلية) ── -->
+    <div id="sec-adm-trcs" class="page-body adm-section" style="display:none;">
+
+      <!-- Header row -->
+      <div class="section-label">
+        <div class="section-label-left"><div class="section-bar" style="background:var(--teal);"></div><span class="section-title">الجاهزية التشغيلية اليومية</span><span class="section-count" id="trcs-completion-count">٠ / ١٨ مكتمل</span></div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span id="trcs-overall-status" class="pill" style="display:none;"></span>
+          <button class="btn btn-sm" style="background:var(--teal-bg);border-color:rgba(26,217,199,.3);color:var(--teal-dark);" onclick="trcsReset()">إعادة تعيين</button>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div class="trcs-progress-bar-wrap">
+        <div class="trcs-progress-bar-track"><div class="trcs-progress-bar-fill" id="trcs-progress-fill" style="width:0%;"></div></div>
+        <span class="trcs-progress-pct" id="trcs-progress-pct">٠٪</span>
+      </div>
+
+      <!-- Operator + Submit zone -->
+      <div class="trcs-operator-bar">
+        <div class="trcs-operator-bar-inner">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="trcs-op-icon">👤</div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">منفذ الجولة الصباحية</div>
+              <select id="trcs-operator" class="form-input" style="max-width:200px;padding:7px 12px;font-size:12.5px;">
+                <option value="">— اختر الاسم —</option>
+                <option value="تركي الغامدي">تركي الغامدي — مسؤول النظام</option>
+                <option value="احمد المطيري">احمد المطيري — مسؤول النظام</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="gap:8px;" onclick="trcsSubmit()">
+            <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l5 5 7-8"></path></svg>
+            تأكيد وإرسال التقرير
+          </button>
+        </div>
+      </div>
+
+      <!-- Submitted result banner (hidden until submitted) -->
+      <div id="trcs-submitted-banner" style="display:none;" class="trcs-submitted-banner">
+        <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px;">✓ تم إرسال تقرير الجاهزية</div>
+        <div style="font-size:12px;color:var(--green-mid);" id="trcs-submit-meta"></div>
+      </div>
+
+      <!-- Checklist zones -->
+      <div id="trcs-checklist">
+
+        <div class="trcs-zone">
+          <div class="trcs-zone-head">
+            <span class="trcs-zone-icon">🏢</span>
+            <span class="trcs-zone-label">مكتب المعالي</span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-office-proximity">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-office-proximity','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-office-proximity','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">شاشة المعالي — Cisco Proximity</span>
+            <span class="trcs-item-status" id="status-trcs-office-proximity"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-office-cisco-int">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-office-cisco-int','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-office-cisco-int','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">شاشة المعالي — Cisco Internal Connection</span>
+            <span class="trcs-item-status" id="status-trcs-office-cisco-int"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-office-phone">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-office-phone','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-office-phone','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">هاتف المعالي الداخلي</span>
+            <span class="trcs-item-status" id="status-trcs-office-phone"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-office-ismac">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-office-ismac','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-office-ismac','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">شاشة iSMAC</span>
+            <span class="trcs-item-status" id="status-trcs-office-ismac"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-office-meeting-table">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-office-meeting-table','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-office-meeting-table','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">طاولة اجتماعات مكتب المعالي</span>
+            <span class="trcs-item-status" id="status-trcs-office-meeting-table"></span>
+          </div>
+        </div>
+        <div class="trcs-zone">
+          <div class="trcs-zone-head">
+            <span class="trcs-zone-icon">🎬</span>
+            <span class="trcs-zone-label">قاعة اجتماعات المعالي</span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-exec-av-vis">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-exec-av-vis','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-exec-av-vis','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">النظام المرئي</span>
+            <span class="trcs-item-status" id="status-trcs-hall-exec-av-vis"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-exec-av-audio">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-exec-av-audio','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-exec-av-audio','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">النظام الصوتي</span>
+            <span class="trcs-item-status" id="status-trcs-hall-exec-av-audio"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-exec-screens">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-exec-screens','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-exec-screens','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">الشاشات / اللابتوب</span>
+            <span class="trcs-item-status" id="status-trcs-hall-exec-screens"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-exec-mics">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-exec-mics','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-exec-mics','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">المايكات / السبيكرات</span>
+            <span class="trcs-item-status" id="status-trcs-hall-exec-mics"></span>
+          </div>
+        </div>
+        <div class="trcs-zone">
+          <div class="trcs-zone-head">
+            <span class="trcs-zone-icon">📺</span>
+            <span class="trcs-zone-label">قاعة المركز التنفيذي</span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-center-center-vis">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-center-center-vis','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-center-center-vis','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">النظام المرئي</span>
+            <span class="trcs-item-status" id="status-trcs-hall-center-center-vis"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-center-center-audio">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-center-center-audio','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-center-center-audio','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">النظام الصوتي</span>
+            <span class="trcs-item-status" id="status-trcs-hall-center-center-audio"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-center-center-screens">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-center-center-screens','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-center-center-screens','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">الشاشات / اللابتوب</span>
+            <span class="trcs-item-status" id="status-trcs-hall-center-center-screens"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-hall-center-center-mics">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-hall-center-center-mics','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-hall-center-center-mics','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">المايكات / السبيكرات</span>
+            <span class="trcs-item-status" id="status-trcs-hall-center-center-mics"></span>
+          </div>
+        </div>
+        <div class="trcs-zone">
+          <div class="trcs-zone-head">
+            <span class="trcs-zone-icon">✅</span>
+            <span class="trcs-zone-label">الفحص التشغيلي العام</span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-general-sys-ready">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-general-sys-ready','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-general-sys-ready','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">جاهزية الأنظمة التقنية العامة</span>
+            <span class="trcs-item-status" id="status-trcs-general-sys-ready"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-general-display-ready">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-general-display-ready','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-general-display-ready','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">جاهزية منظومة العرض والتقديم</span>
+            <span class="trcs-item-status" id="status-trcs-general-display-ready"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-general-audio-ready">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-general-audio-ready','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-general-audio-ready','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">جاهزية منظومة الصوت</span>
+            <span class="trcs-item-status" id="status-trcs-general-audio-ready"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-general-comm-ready">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-general-comm-ready','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-general-comm-ready','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">جاهزية منظومة الاتصال الداخلي والمرئي</span>
+            <span class="trcs-item-status" id="status-trcs-general-comm-ready"></span>
+          </div>
+          <div class="trcs-item" id="wrap-trcs-general-ops-notes">
+            <div class="trcs-check-group">
+              <button class="trcs-btn ok" onclick="trcsSetStatus('trcs-general-ops-notes','ok')" title="يعمل">✓</button>
+              <button class="trcs-btn bad" onclick="trcsSetStatus('trcs-general-ops-notes','bad')" title="لا يعمل">✕</button>
+            </div>
+            <span class="trcs-item-label">سجل الملاحظات التشغيلية اليومية</span>
+            <span class="trcs-item-status" id="status-trcs-general-ops-notes"></span>
+          </div>
+        </div>
+
+        <div class="trcs-zone">
+          <div class="trcs-zone-head">
+            <span class="trcs-zone-icon">📝</span>
+            <span class="trcs-zone-label">ملاحظات الجولة</span>
+          </div>
+          <textarea id="trcs-notes-field" class="trcs-notes-input" placeholder="أي ملاحظات تشغيلية إضافية..."></textarea>
+        </div>
+      </div>
+
+      <!-- Team Leader view -->
+      <div class="section-label" style="margin-top:20px;">
+        <div class="section-label-left">
+          <div class="section-bar" style="background:var(--navy);"></div>
+          <span class="section-title">رؤية مدير الفريق</span>
+          <span class="section-count">لوحة المتابعة والاعتماد</span>
+        </div>
+      </div>
+      <div class="sc" id="trcs-leader-view">
+        <div class="trcs-leader-empty">
+          <div class="trcs-leader-empty-icon">📋</div>
+          <div class="trcs-leader-empty-title">في انتظار تقرير الجاهزية الصباحي</div>
+          <div class="trcs-leader-empty-sub">بعد إرسال تقرير الجولة ستظهر هنا نتائج الفحص ومعلومات المنفذ.</div>
+        </div>
+      </div>
+
+    </div><!-- /sec-adm-trcs -->
+
+  </main>
+</div><!-- /screen-admin -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  MODALS                                                  ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+
+<!-- CANCEL (Director/Admin only) -->
+<div class="modal-overlay" id="modal-cancel">
+  <div class="modal-box">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon cancel">✕</div>
+    <div class="modal-title">تأكيد إلغاء الاجتماع</div>
+    <div class="modal-chip" id="cancel-meeting-chip">📅</div>
+    <div class="modal-footer">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-cancel')">تراجع</button>
+      <button class="modal-btn cancel" onclick="closeModal('modal-cancel')">تأكيد الإلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- ATTENDEES -->
+<div class="modal-overlay" id="modal-attendees">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon info">👥</div>
+    <div class="modal-title">قائمة الحضور المؤكد</div>
+    <div class="modal-chip" id="att-meeting-chip">📅</div>
+    <div id="att-list-body" class="att-list" style="max-height:320px;overflow-y:auto;margin-bottom:16px;"></div>
+    <div class="modal-footer"><button class="modal-btn info" onclick="closeModal('modal-attendees')">إغلاق</button></div>
+  </div>
+</div>
+
+<!-- KPI POPUP -->
+<div class="modal-overlay" id="modal-kpi">
+  <div class="modal-box" style="width:600px;max-width:95vw;">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div id="kpi-popup-bar" style="height:3px;border-radius:3px;margin-bottom:16px;"></div>
+    <div id="kpi-popup-title" style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:14px;"></div>
+    <div id="kpi-popup-body" style="max-height:440px;overflow-y:auto;"></div>
+    <div class="modal-footer" style="margin-top:16px;"><button class="modal-btn info" onclick="closeModal('modal-kpi')">إغلاق</button></div>
+  </div>
+</div>
+
+<!-- EMPLOYEE SUBMIT CONFIRM -->
+<div class="modal-overlay" id="modal-submit-confirm">
+  <div class="modal-box">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon confirm">✓</div>
+    <div class="modal-title">تم إرسال الطلب بنجاح</div>
+    <div class="modal-chip">📋 طلب اجتماع · قطاع البنية التحتية للمياه</div>
+    <div class="modal-desc">تم استلام طلبك وإحالته إلى مكتب المعالي. ستتلقى إشعاراً فور البت في الموعد.</div>
+    <div class="modal-footer"><button class="modal-btn confirm" onclick="closeModal('modal-submit-confirm')">حسناً</button></div>
+  </div>
+</div>
+
+<!-- NEW COMM FORM -->
+<div class="modal-overlay" id="modal-new-comm">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon" style="background:var(--purple-bg);">📨</div>
+    <div class="modal-title">إنشاء طلب اتصال</div>
+    <div class="modal-note">يُستخدم هذا النموذج حصراً من قِبَل سكرتارية مكتب المعالي.</div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>اسم مقدّم الطلب الحقيقي</label><input class="form-input" placeholder="مثال: م. فهد العمري"></div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>المنصب / الجهة</label><input class="form-input" placeholder="مثال: المدير التنفيذي للشؤون المالية "></div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>موضوع الاتصال</label><input class="form-input" placeholder="صِف الموضوع باختصار"></div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>تفاصيل الطلب</label><textarea class="form-input" style="min-height:70px;" placeholder="اشرح الطلب أو القرار المطلوب..."></textarea></div>
+    <div class="form-group" style="margin-bottom:0;"><label class="form-label">مستوى الأولوية</label><select class="form-input"><option>عادي</option><option selected="">متوسط</option><option>عاجل</option></select></div>
+    <div class="modal-footer" style="margin-top:16px;"><button class="modal-btn-ghost" onclick="closeModal('modal-new-comm')">إلغاء</button><button class="modal-btn purple" onclick="closeModal('modal-new-comm')">إرسال للمعالي</button></div>
+  </div>
+</div>
+
+<!-- NEW MEETING FORM -->
+<div class="modal-overlay" id="modal-new-meeting">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon info">📅</div>
+    <div class="modal-title">إنشاء طلب اجتماع جديد</div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>موضوع الاجتماع</label><input class="form-input" placeholder="أدخل موضوع الاجتماع بوضوح ودقة"></div>
+    <div class="form-row-2" style="margin-bottom:12px;"><div class="form-group" style="margin-bottom:0;"><label class="form-label"><span class="required">*</span>التاريخ المقترح</label><input class="form-input" type="date"></div><div class="form-group" style="margin-bottom:0;"><label class="form-label"><span class="required">*</span>الوقت المقترح</label><select class="form-input"><option>٩:٠٠ ص</option><option>١٠:٠٠ ص</option><option selected="">١١:٠٠ ص</option><option>١٢:٠٠ م</option><option>١:٠٠ م</option><option>٢:٠٠ م</option><option>٣:٠٠ م</option></select></div></div>
+    <div class="form-row-2" style="margin-bottom:12px;"><div class="form-group" style="margin-bottom:0;"><label class="form-label"><span class="required">*</span>المدة المتوقعة</label><select class="form-input"><option>٣٠ دقيقة</option><option selected="">٦٠ دقيقة</option><option>٩٠ دقيقة</option><option>١٢٠ دقيقة</option></select></div><div class="form-group" style="margin-bottom:0;"><label class="form-label"><span class="required">*</span>الأولوية</label><select class="form-input"><option>عادي</option><option selected="">متوسط</option><option>عاجل</option></select></div></div>
+    <div class="form-group" style="margin-bottom:12px;"><label class="form-label"><span class="required">*</span>القاعة</label><select class="form-input"><option selected="">قاعة المركز التنفيذي</option><option>قاعة اجتماعات المعالي</option><option>طاولة مكتب المعالي للاجتماعات</option></select></div>
+    <div class="form-group" style="margin-bottom:0;"><label class="form-label"><span class="required">*</span>الجهة الطالبة</label><input class="form-input" placeholder="اسم الإدارة أو القطاع"></div>
+    <div class="modal-footer" style="margin-top:16px;"><button class="modal-btn-ghost" onclick="closeModal('modal-new-meeting')">إلغاء</button><button class="modal-btn info" onclick="closeModal('modal-new-meeting')">إضافة للجدول</button></div>
+  </div>
+</div>
+
+<!-- ACTION TOAST — shows direct feedback without a popup -->
+<div id="action-toast" class="action-toast" style="display:none;">
+  <span class="action-toast-icon" id="action-toast-icon"></span>
+  <span class="action-toast-text" id="action-toast-text"></span>
+</div>
+
+<!-- ══ NEW: BOARD MEETING ADD/EDIT MODAL ══════════════════════ -->
+<div class="modal-overlay" id="modal-board-add">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon" style="background:var(--amber-bg);color:var(--amber-mid);">🏛</div>
+    <div class="modal-title" id="board-modal-title">إضافة اجتماع مجلس إدارة</div>
+    <input type="hidden" id="board-edit-id" value="">
+    <div class="form-group" style="margin-bottom:12px;">
+      <label class="form-label"><span class="required">*</span>عنوان الاجتماع</label>
+      <input class="form-input" id="board-form-title" placeholder="مثال: اجتماع مجلس الإدارة — الدورة الثانية">
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>نوع المجلس</label>
+        <select class="form-input" id="board-form-boardtype">
+          <option value="swa">مجلس إدارة الهيئة السعودية للمياه</option>
+          <option value="transfer">مجلس إدارة نقل المياه</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>نوع الاجتماع</label>
+        <select class="form-input" id="board-form-type">
+          <option value="mid">منتصف الشهر</option>
+          <option value="end">نهاية الشهر</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>تاريخ الاجتماع</label>
+        <input class="form-input" type="date" id="board-form-date">
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">الوقت</label>
+        <select class="form-input" id="board-form-time">
+          <option>٩:٠٠ ص</option><option>١٠:٠٠ ص</option>
+          <option selected>١١:٠٠ ص</option><option>١٢:٠٠ م</option>
+          <option>١:٠٠ م</option><option>٢:٠٠ م</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:0;">
+      <label class="form-label">ملاحظات</label>
+      <textarea class="form-input" id="board-form-notes" style="min-height:60px;" placeholder="أي ملاحظات إضافية..."></textarea>
+    </div>
+    <div class="modal-footer" style="margin-top:16px;">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-board-add')">إلغاء</button>
+      <button class="modal-btn" style="background:var(--amber-mid);border-color:var(--amber);" onclick="saveBoardMeeting()">حفظ الاجتماع</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NEW: COMMITTEE ADD MODAL ══════════════════════════════ -->
+<div class="modal-overlay" id="modal-committee-add">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon" style="background:var(--purple-bg);">👥</div>
+    <div class="modal-title">إضافة اجتماع لجنة</div>
+    <div class="form-group" style="margin-bottom:12px;">
+      <label class="form-label"><span class="required">*</span>عنوان الاجتماع</label>
+      <input class="form-input" id="comm-form-title" placeholder="مثال: اجتماع لجنة الاستدامة المائية">
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>اللجنة / الجهة</label>
+        <input class="form-input" id="comm-form-committee" placeholder="مثال: لجنة الاستدامة">
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>التاريخ</label>
+        <input class="form-input" type="date" id="comm-form-date">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:0;">
+      <label class="form-label">ملاحظات</label>
+      <input class="form-input" id="comm-form-notes" placeholder="تفاصيل إضافية...">
+    </div>
+    <div class="modal-footer" style="margin-top:16px;">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-committee-add')">إلغاء</button>
+      <button class="modal-btn purple" onclick="saveCommitteeMeeting()">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEETING MGMT MODAL ══════════════════════════════ -->
+<div class="modal-overlay" id="modal-meeting-mgmt">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon info">📅</div>
+    <div class="modal-title" id="meet-mgmt-modal-title">إنشاء اجتماع جديد</div>
+    <input type="hidden" id="meet-mgmt-edit-id">
+
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>عنوان الاجتماع</label>
+        <input class="form-input" id="mm-title" placeholder="أدخل عنوان الاجتماع">
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>الجهة الطالبة</label>
+        <input class="form-input" id="mm-entity" placeholder="مثال: قطاع البنية التحتية">
+      </div>
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>التاريخ</label>
+        <input class="form-input" type="date" id="mm-date">
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>الوقت</label>
+        <select class="form-input" id="mm-time">
+          <option>٩:٠٠ ص</option><option>٩:٣٠ ص</option><option>١٠:٠٠ ص</option>
+          <option>١٠:٣٠ ص</option><option>١١:٠٠ ص</option><option>١١:٣٠ ص</option>
+          <option>١٢:٠٠ م</option><option>١:٠٠ م</option><option>٢:٠٠ م</option>
+          <option>٣:٠٠ م</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">القاعة</label>
+        <select class="form-input" id="mm-room">
+          <option>قاعة المركز التنفيذي</option>
+          <option>قاعة اجتماعات المعالي</option>
+          <option>طاولة مكتب المعالي للاجتماعات</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">الأولوية</label>
+        <select class="form-input" id="mm-priority">
+          <option value="high">عاجل</option>
+          <option value="medium" selected>متوسط</option>
+          <option value="normal">عادي</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Agenda -->
+    <div class="form-group" style="margin-bottom:8px;">
+      <label class="form-label">بنود الأجندة</label>
+    </div>
+    <div id="agenda-items-list" style="margin-bottom:8px;"></div>
+    <button class="btn btn-sm" style="margin-bottom:12px;" onclick="addAgendaItem()">+ إضافة بند</button>
+
+    <div class="form-group" style="margin-bottom:0;">
+      <label class="form-label">ملاحظات</label>
+      <textarea class="form-input" id="mm-notes" style="min-height:60px;" placeholder="ملاحظات إضافية..."></textarea>
+    </div>
+    <div class="modal-footer" style="margin-top:16px;">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-meeting-mgmt')">إلغاء</button>
+      <button class="modal-btn info" onclick="saveMeetingMgmt()">حفظ الاجتماع</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOM MODAL ═══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-mom">
+  <div class="modal-box wide">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon" style="background:var(--amber-bg);color:var(--amber-mid);">📋</div>
+    <div class="modal-title" id="mom-modal-title">محضر اجتماع جديد</div>
+    <input type="hidden" id="mom-edit-id">
+
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>الاجتماع</label>
+        <select class="form-input" id="mom-meeting">
+          <option>استعراض خطة التحول الرقمي</option>
+          <option>الاجتماع الدوري لمتابعة سير الأعمال</option>
+          <option>اجتماع الجاهزية المؤسسية</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label"><span class="required">*</span>التاريخ</label>
+        <input class="form-input" type="date" id="mom-date">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:12px;">
+      <label class="form-label">ملخص الاجتماع</label>
+      <textarea class="form-input" id="mom-summary" style="min-height:80px;" placeholder="ملخص ما تم مناقشته..."></textarea>
+    </div>
+    <div class="form-group" style="margin-bottom:8px;">
+      <label class="form-label">القرارات المتخذة</label>
+    </div>
+    <div id="mom-decisions-list" style="margin-bottom:8px;"></div>
+    <button class="btn btn-sm" style="margin-bottom:12px;" onclick="addMomDecision()">+ إضافة قرار</button>
+
+    <div class="form-group" style="margin-bottom:0;">
+      <label class="form-label">ملاحظات ختامية</label>
+      <textarea class="form-input" id="mom-notes" style="min-height:60px;" placeholder="ملاحظات..."></textarea>
+    </div>
+    <div class="modal-footer" style="margin-top:16px;">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-mom')">إلغاء</button>
+      <button class="modal-btn" style="background:var(--amber-mid);border-color:var(--amber);" onclick="saveMom()">حفظ المحضر</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TASK MODAL ══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-task">
+  <div class="modal-box">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div class="modal-type-icon" style="background:var(--green-bg);color:var(--green-mid);">✓</div>
+    <div class="modal-title" id="task-modal-title">إضافة مهمة جديدة</div>
+    <input type="hidden" id="task-edit-id">
+
+    <div class="form-group" style="margin-bottom:12px;">
+      <label class="form-label"><span class="required">*</span>عنوان المهمة</label>
+      <input class="form-input" id="task-title" placeholder="أدخل وصف المهمة">
+    </div>
+    <div class="form-row-2" style="margin-bottom:12px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">المُسنَد إليه</label>
+        <input class="form-input" id="task-assignee" placeholder="مثال: م. خالد الرشيد">
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">تاريخ الاستحقاق</label>
+        <input class="form-input" type="date" id="task-due">
+      </div>
+    </div>
+    <div class="form-row-2" style="margin-bottom:0;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">الاجتماع المرتبط</label>
+        <select class="form-input" id="task-meeting">
+          <option value="">— غير مرتبط —</option>
+          <option>استعراض خطة التحول الرقمي</option>
+          <option>الاجتماع الدوري لمتابعة سير الأعمال</option>
+          <option>اجتماع الجاهزية المؤسسية</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label class="form-label">الأولوية</label>
+        <select class="form-input" id="task-priority">
+          <option value="high">عاجل</option>
+          <option value="medium" selected>متوسط</option>
+          <option value="normal">عادي</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer" style="margin-top:16px;">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-task')">إلغاء</button>
+      <button class="modal-btn" style="background:var(--green-mid);border-color:var(--green);" onclick="saveTask()">حفظ المهمة</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEETING DETAIL MODAL ════════════════════════════ -->
+<div class="modal-overlay" id="modal-meeting-detail">
+  <div class="modal-box wide" style="max-width:680px;">
+    <div class="modal-logo-strip">
+      <div class="modal-logo-badge"><img src="assets/logo/swa-logo.jpg" alt="SWA"></div>
+      <div class="modal-system-label">الهيئة السعودية للمياه · <b>UMMS</b></div>
+    </div>
+    <div id="detail-content" style="margin-bottom:16px;"></div>
+    <div class="modal-footer">
+      <button class="modal-btn-ghost" onclick="closeModal('modal-meeting-detail')">إغلاق</button>
+      <button class="modal-btn info" id="detail-edit-btn">تعديل</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
